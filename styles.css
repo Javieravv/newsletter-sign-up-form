@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --widthMobile: 375px;
+    --widthDesktop: 1440px;
+    --colorTomato: hsl(4, 100%, 67%);
+    --colorDarkSlateGrey: hsl(234, 29%, 20%);
+    --colorCharcoalGrey: hsl(235, 18%, 26%);
+    --colorGrey: hsl(231, 7%, 60%);
+    --colorWhite: hsl(0, 0%, 100%);
+    --fontSizeParagraph: 16px;
+    --fontFamily: 'Roboto', sans-serif;
+    --paddinMarginLeft: 25px;
+    --marginContainerInformation: 15px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--fontFamily);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    place-content: center center;
+    align-items: center;
+}
+
+ul li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Css para la imagen */
+.image {
+    min-height: 290px;
+    background-image: url('./assets//images/illustration-sign-up-mobile.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* background-position: top right; */
+}
+
+/* Container principal */
+.newsletter-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px var(--paddinMarginLeft);
+}
+
+/* Container principal -- Información */
+
+.newsletter-container_information>* {
+    margin-top: var(--marginContainerInformation);
+    margin-bottom: var(--marginContainerInformation);
+}
+
+.newsletter-container_information h1 {
+    font-size: 2.5rem;
+    color: var(--colorDarkSlateGrey);
+    font-weight: bolder;
+}
+
+.newsletter-container_information p {
+    color: var(--colorCharcoalGrey);
+    font-size: var(--fontSizeParagraph);
+    line-height: 1.5;
+    font-weight: bold;
+    opacity: 0.9;
+}
+
+.newsletter-container_information ul {
+    list-style-image: url('./assets/images/icon-list.svg');
+    list-style-position: inline;
+    margin-left: var(--paddinMarginLeft);
+}
+
+.newsletter-container_information ul li {
+    padding: calc(var(--paddinMarginLeft) - 10px) 0;
+}
+
+/* Container principal - Formulario */
+.newsletter-container_formulario {
+    display: grid;
+    grid-template-rows: 20px 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "message-email message-error"
+        "input-email input-email"
+        "input-submit input-submit";
+    gap: 5px;
+}
+
+.email-input {
+    padding: 15px 25px;
+    color: var(--colorDarkSlateGrey);
+    border: 1px solid var(--colorGrey);
+    border-radius: 5px;
+    font-weight: bold;
+    grid-area: input-email;
+    margin-bottom: 15px;
+}
+
+
+.email-input:invalid {
+    border: 1px solid var(--colorTomato) !important;
+    background-color: rgb(251, 206, 206);
+}
+
+.email-input:invalid+p {
+    display: block
+}
+
+.email-submit {
+    padding: 15px 25px;
+    color: var(--colorWhite);
+    background-color: var(--colorDarkSlateGrey);
+    font-weight: var(--colorWhite);
+    border: none;
+    border-radius: 5px;
+    order: 3;
+    grid-area: input-submit;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    align-self: start;
+}
+
+.email-submit:hover, .email-dismiss:hover {
+    background: linear-gradient(to right, hsl(4, 100%, 67%), hsl(4, 96%, 45%));
+    
+}
+
+
+.email-message {
+    grid-area: message-email;
+    color: var(--colorDarkSlateGrey);
+    font-weight: bold;
+}
+
+.email-error {
+    grid-area: message-error;
+    color: var(--colorTomato);
+    font-weight: bolder;
+    justify-self: end;
+    display: none;
+    font-size: calc(var(--fontSizeParagraph) - 2px);
+}
+
+/* =========================================================
+Estilos para form-end.html 
+============================================================ */
+
+.form-end {
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--paddinMarginLeft);
+}
+
+.form-end article {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-end article:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: start;
+    place-content: center;
+    min-height: 450px;
+}
+
+.form-end article:nth-child(1) h1 {
+    font-size: 3rem;
+    color: var(--colorDarkSlateGrey);
+    font-weight: bolder;
+}
+
+.form-end article:nth-child(1) p {
+    font-size: var(--fontSizeParagraph);
+    line-height: 2;
+}
+
+.email-dismiss {
+    padding: 15px 25px;
+    color: var(--colorWhite);
+    background-color: var(--colorDarkSlateGrey);
+    font-weight: var(--colorWhite);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+/* =========================================================
+Media queries 
+========================================================= */
+@media (width > 600px) {
+       
+    :root {
+        --paddinMarginLeft: 20px;
+        --marginContainerInformation: 10px;
+    }
+
+    body {
+        min-height: 100vh;
+        background-color: var(--colorDarkSlateGrey);
+    }
+
+    main {
+        width: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: var(--colorWhite);
+        padding: 25px;
+        border-radius: 25px;
+        min-height: 600px;
+    }
+
+    .image {
+        order: 2;
+        background-image: url('./assets/images/illustration-sign-up-desktop.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    }
+    
+    /* Container principal */
+    .newsletter-container {
+        order: 1;
+        justify-content: space-around;
+    }
+
+    /*===============================================
+     Form end 
+     ================================================*/
+    .form-end {
+        min-height: 480px;
+        width: 400px;
+        justify-content: space-evenly;
+        padding: calc(var(--paddinMarginLeft) + 25px);
+        background-color: var(--colorWhite);
+        border-radius: 25px;
+    }
+    
+        
+    .form-end article:nth-child(1) {
+         gap: 15px;
+        align-items: top;
+        place-content: top;
+        min-height: 200px;
+    }
+
+    .form-end article:nth-child(1) p {
+        font-size: calc(var(--fontSizeParagraph) - 2px);
+        line-height: 1.5;
+    }
+}
+
+@media (width > 800px) {
+    main {
+        width: 800px;
+    }
+}
